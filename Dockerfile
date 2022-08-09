@@ -17,3 +17,7 @@ RUN cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -INSTALL_GDALCPP=on -WITH_PROJ=on ..
 RUN git clone --depth 1 --branch v1.14.0 https://github.com/osmcode/osmium-tool.git /osmium-tool
 WORKDIR /osmium-tool/build
 RUN cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .. && make && make install
+
+FROM scratch
+
+COPY --from=osmium_builder /usr/local/bin/osmium /usr/local/bin/
