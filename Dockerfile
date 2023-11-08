@@ -10,11 +10,11 @@ RUN apt-get update \
 
 #RUN wget https://raw.githubusercontent.com/joto/gdalcpp/master/gdalcpp.hpp -o /usr/local/include/
 
-RUN git clone --depth 1 --branch v2.18.0 https://github.com/osmcode/libosmium.git
+RUN git clone --depth 1 --branch v2.20.0 https://github.com/osmcode/libosmium.git
 WORKDIR /libosmium/build
 RUN cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -INSTALL_GDALCPP=on -WITH_PROJ=on .. && make && make install
 
-RUN git clone --depth 1 --branch v1.14.0 https://github.com/osmcode/osmium-tool.git /osmium-tool
+RUN git clone --depth 1 --branch v1.16.0 https://github.com/osmcode/osmium-tool.git /osmium-tool
 WORKDIR /osmium-tool/build
 RUN cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .. && make && make install
 
